@@ -1,7 +1,7 @@
 # Mediawiki-Nginx
 #
 # Version 1.0
-FROM ubuntu:14.04
+FROM ubuntu:vivid
 MAINTAINER Martijn van Maurik <martijn@vmaurik.nl>
 
 # Ensure UTF-8
@@ -33,6 +33,7 @@ RUN mkdir /var/lib/mediawiki
 
 # Move the files that need to be persistent and create symbolic links to them
 RUN mv /data/images /var/lib/mediawiki/ && ln -s /var/lib/mediawiki/images /data/images
+RUN mv /data/extensions /var/lib/mediawiki/ && ln -s /var/lib/mediawiki/extensions /data/extensions
 RUN mv /data/skins /var/lib/mediawiki/ && ln -s /var/lib/mediawiki/skins /data/skins
 RUN touch /var/lib/mediawiki/LocalSettings.php && ln -s /var/lib/mediawiki/LocalSettings.php /data/LocalSettings.php
 
